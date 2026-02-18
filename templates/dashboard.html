@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timesheet Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        .menu a {
+            display: block;
+            padding: 12px;
+            margin: 10px 0;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .hours {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            font-size: 18px;
+        }
+
+        .logout {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .logout a {
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Employee Info -->
+    <div class="card">
+        <h2>{{ employee.user.first_name }} {{ employee.user.last_name }}</h2>
+        <p>ID: {{ employee.emp_id }}</p>
+    </div>
+
+    <!-- Menu -->
+    <div class="card menu">
+        <a href="/timesheet/">📅 Timesheet</a>
+        <a href="/allocation/">📂 My Allocation</a>
+        <a href="#">⚙ Settings</a>
+        <a href="#">❓ Help & FAQ</a>
+    </div>
+
+    <!-- Timesheet Summary -->
+    <div class="card">
+        <h3>Work Summary</h3>
+
+        <div class="hours">
+            <span>Billable</span>
+            <b>{{ total_billable }} hrs</b>
+        </div>
+
+        <div class="hours">
+            <span>Non-Billable</span>
+            <b>{{ total_non_billable }} hrs</b>
+        </div>
+    </div>
+
+    <!-- Logout -->
+    <div class="logout">
+        <a href="/logout/">Logout</a>
+    </div>
+
+</div>
+
+</body>
+</html>

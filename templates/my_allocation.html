@@ -1,0 +1,9 @@
+<h2>My Allocation</h2>
+
+{% for a in allocations %}
+  <p><b>Project:</b> {{ a.project.name }}</p>
+  <p>Start: {{ a.start_date }} | End: {{ a.end_date }}</p>
+  <hr>
+{% empty %}
+  <p>No allocation found.</p>
+{% endfor %}
