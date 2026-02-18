@@ -18,19 +18,21 @@ from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
 from accounts.views import employee_login
+from accounts.views import employee_login, admin_dashboard
 
 def home_redirect(request):
     return redirect('login')
 
 urlpatterns = [
-    path('', home_redirect),   # When opening 127.0.0.1:8000/
+    path('', employee_login, name='login'),
     path('admin/', admin.site.urls),
-    path('login/', employee_login, name='login'),
 
-    # Other apps
+    path('admin-dashboard/', admin_dashboard, name='admin_dashboard'),  # ← REQUIRED
+
     path('projects/', include('projects.urls')),
     path('timesheet/', include('timesheets.urls')),
 ]
+
 
 
 
