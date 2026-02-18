@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['timesheet-ywef.onrender.com']
 
+PORT = os.environ.get('PORT', 8000)
 # Application definition
 
 INSTALLED_APPS = [
