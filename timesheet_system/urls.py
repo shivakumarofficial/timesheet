@@ -16,11 +16,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
+from accounts.views import employee_login
+
+def home_redirect(request):
+    return redirect('login')
 
 urlpatterns = [
+    path('', home_redirect),   # When opening 127.0.0.1:8000/
     path('admin/', admin.site.urls),
-    path('', include('projects.urls')),
-    path('timesheet/', include('timesheets.urls')),
-    path("", include("accounts.urls")),   # login page opens at home
+    path('login/', employee_login, name='login'),
 
+    # Other apps
+    path('projects/', include('projects.urls')),
+    path('timesheet/', include('timesheets.urls')),
 ]
+
+
